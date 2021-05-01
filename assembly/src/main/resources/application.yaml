@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: { SPRING_DS_URL }
+    username: { SPRING_DS_USERNAME }
+    password: { SPEING_DS_PASS }
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  freemarker:
+    expose-request-attributes: true
+
+upload:
+  path: C:/Users/ATsypushtanov/MyData/find-me-app/uploads

@@ -1,0 +1,6 @@
+# Project exclude paths
+/adapters/service-adapter/target/
+/adapters/ui-adapter/target/
+/assembly/target/
+/core/target/
+/ports/target/
