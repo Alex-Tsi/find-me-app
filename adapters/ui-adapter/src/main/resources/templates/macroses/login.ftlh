@@ -23,12 +23,10 @@
 </#macro>
 
 <#macro logout>
-    <div>
-        <form action="/logout" method="post">
-            <button type="submit" class="btn btn-primary" value="Sign out">
-                Выйти
-            </button>
-            <input type="hidden" name="_csrf" value="${_csrf.token}">
-        </form>
-    </div>
+    <form class="my-0" action="/logout" method="post">
+        <button type="submit" class="btn btn-outline-danger" value="Sign out">Выйти</button>
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+    </form>
 </#macro>
+
+

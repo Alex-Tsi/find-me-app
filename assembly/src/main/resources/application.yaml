@@ -10,8 +10,19 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+
   freemarker:
     expose-request-attributes: true
 
+  session:
+    store-type: none
+
+#  session:
+#    jdbc:
+#      initialize-schema: always
+#      table-name: SPRING_SESSION
+
 upload:
   path: C:/Users/ATsypushtanov/MyData/find-me-app/uploads
+

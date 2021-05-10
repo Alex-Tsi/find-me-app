@@ -8,13 +8,13 @@ public interface PublicationService {
 
     List<Publication> findAll();
 
-    Publication findById(int id);
+    Publication findById(long id);
 
-    List<Publication> findByTag(String tag);
+    List<Publication> findByTags(String tag);
 
     void updatePublication(String text);
 
-    void deletePublication(int id);
+    void deletePublication(long id);
 
-    void save(Publication message);
+    void save(Publication publication);
 }

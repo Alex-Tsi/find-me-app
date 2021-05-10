@@ -9,12 +9,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.io.File;
 
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class MvcConfigurer implements WebMvcConfigurer {
     @Value("${upload.path}")
     private String uploadPath;
 
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("/security/login");
+        registry.addViewController("/security/login").setViewName("redirect:/publications/find");
     }
 
     @Override
@@ -22,6 +23,8 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("file:" + uploadPath + File.separator);
         registry.addResourceHandler("/static/**")
-                .addResourceLocations("classpath:/static/");
+                .addResourceLocations("classpath:/static/")
+                .addResourceLocations("classpath:/static/chat");
     }
 }
+//.setViewName("redirect:/publications/find");

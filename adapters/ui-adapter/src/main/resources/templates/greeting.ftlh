@@ -1,5 +1,8 @@
 <#import "macroses/common.ftlh" as c>
+<#include "security/user.ftlh">
+<head>
+    <#include "macroses/imports.ftlh">
+</head>
 <@c.page>
-    <h5>Find Me App</h5>
-    <div>This is app for diploma</div>
+    This app create for diploma
 </@c.page>
