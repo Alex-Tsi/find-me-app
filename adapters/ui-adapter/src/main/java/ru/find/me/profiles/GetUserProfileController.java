@@ -13,11 +13,11 @@ import java.util.Date;
 
 
 @Controller
-public class GetUserProfile {
+public class GetUserProfileController {
 
     private final UserService userService;
 
-    public GetUserProfile(UserService userService) {
+    public GetUserProfileController(UserService userService) {
         this.userService = userService;
     }
 

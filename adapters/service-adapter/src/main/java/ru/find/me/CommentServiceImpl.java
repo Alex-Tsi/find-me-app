@@ -11,7 +11,7 @@ import ru.find.me.model.User;
 import javax.persistence.EntityManager;
 
 @Service
-public class CommentServiceImpl implements CommentService{
+public class CommentServiceImpl implements ru.find.me.CommentService {
 
     private final CommentRepo commentRepo;
     private final EntityManager em;
@@ -23,11 +23,7 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public void addCommentToUser(User user, Comment comment) {
-        Session session = em.unwrap(Session.class);
-        Transaction transaction = session.beginTransaction();
-        user.addComments(comment);
-        session.save(user);
-        transaction.commit();
+    public void saveComment(Comment comment) {
+        commentRepo.save(comment);
     }
 }

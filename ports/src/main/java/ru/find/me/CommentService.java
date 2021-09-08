@@ -5,6 +5,5 @@ import ru.find.me.model.User;
 
 public interface CommentService {
 
-    void addCommentToUser(User user, Comment comment);
-
+    void saveComment(Comment comment);
 }

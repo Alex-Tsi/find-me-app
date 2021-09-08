@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import ru.find.me.model.User;
 
 @Controller
-public class EditUserProfile {
+public class EditUserProfileController {
 
     @GetMapping("/redact-user-profile/{user}")
     public String editProfile(@PathVariable("user") User user,

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.find.me.PublicationService;
 import ru.find.me.model.Publication;
 import ru.find.me.model.User;
-import ru.find.me.publications.util.TransferFile;
+import ru.find.me.util.TransferFile;
 
 @Controller
 @RequestMapping("/publications")
@@ -47,8 +47,8 @@ public class PostPublicationsController {
 
     @SneakyThrows
     @GetMapping("/create")
-    public String createPublication(@AuthenticationPrincipal User user,
-            Model model) {
+        public String createPublication(@AuthenticationPrincipal User user,
+                Model model) {
         var publication = new Publication();
         publication.setAuthor(user);
         publicationService.save(publication);

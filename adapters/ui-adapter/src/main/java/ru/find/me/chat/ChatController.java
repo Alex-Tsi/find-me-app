@@ -40,8 +40,8 @@ public class ChatController {
     }
 
     public List<User> extractUsersConformityDialogues(List<Room> rooms, User user) {
-        return rooms.stream().map(Room::getUsers).flatMap(Collection::stream).filter(u ->
-                !u.equals(user)).collect(Collectors.toList());
+        return rooms.stream().map(Room::getUsers).flatMap(Collection::stream)
+                .filter(u -> !u.equals(user)).collect(Collectors.toList());
     }
 
     public void addModelIfChatSelected(Model model, Room room, User user) {
@@ -51,6 +51,4 @@ public class ChatController {
             model.addAttribute("companion", companion);
         }
     }
-
-
 }

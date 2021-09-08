@@ -116,6 +116,7 @@
                                     <td>Адрес:</td>
                                     <td>${profile.address!""}</td>
                                 </tr>
+
                                 <tr>
                                     <td>Пол:</td>
                                     <td>${profile.sex!""}</td>
@@ -132,6 +133,10 @@
                                 <tr>
                                     <td>Почта:</td>
                                     <td>${profile.email!""}</td>
+                                </tr>
+                                <tr>
+                                    <td>Контактный номер телефона:</td>
+                                    <td>${profile.phoneNumber!""}</td>
                                 </tr>
                                 <tr>
                                     <#if currentUserId == profile.user.id>

@@ -5,7 +5,8 @@ known = Session.SPRING_SECURITY_CONTEXT??
     <#assign
     user = Session.SPRING_SECURITY_CONTEXT.authentication.principal
     name = user.getUsername()
-    currentUserId = user.getId()
+    currentUserId = user.getId()!""
+    skills = user.getProfile().getSkills()!""
     >
 <#else>
     <#assign

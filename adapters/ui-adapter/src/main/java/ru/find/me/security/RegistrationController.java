@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.find.me.UserService;
+import ru.find.me.model.Profile;
 import ru.find.me.model.Role;
 import ru.find.me.model.User;
 
@@ -41,6 +42,8 @@ public class RegistrationController {
     public void createUser(User user) {
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
+        Profile profile = new Profile();
+        user.setProfile(profile);
         userService.save(user);
     }
 }

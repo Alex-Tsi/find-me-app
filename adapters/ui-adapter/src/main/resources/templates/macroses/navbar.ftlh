@@ -15,13 +15,13 @@
                 </li>
                 <#if user??>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Просмотр соответствиющих мне</a>
+                        <a class="nav-link active" aria-current="page" href="/publications/filter/${skills}">Просмотр соответствиющих мне</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" id="connect" href="/chat/${currentUserId}">Мессенджер</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/user-publications/${currentUserId}">Мои
+                        <a class="nav-link active" aria-current="page" href="/user-publications/1">Мои
                             публикации</a>
                     </li>
                 </#if>

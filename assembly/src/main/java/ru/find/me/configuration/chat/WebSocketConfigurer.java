@@ -12,16 +12,13 @@ public class WebSocketConfigurer implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-//        registry.addEndpoint("/chat").setAllowedOrigins("*").withSockJS();
         registry.addEndpoint("/messenger").withSockJS();
     }
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.setApplicationDestinationPrefixes("/app")
-                .setUserDestinationPrefix("/user")
+//                .setUserDestinationPrefix("/user")
                 .enableSimpleBroker("/user");
-//        registry.enableSimpleBroker("/topic");
-//        registry.setApplicationDestinationPrefixes("/app");
     }
 }

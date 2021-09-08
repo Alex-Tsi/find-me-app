@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.find.me.PublicationService;
 import ru.find.me.model.Publication;
-import ru.find.me.publications.util.TransferFile;
+import ru.find.me.util.TransferFile;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

@@ -47,8 +47,7 @@
                                                         alt="КОТ"></span>
                                             <span class="chat_ib">
                                                 <h5>${user.username} <span class="chat_date">Dec 25</span></h5>
-                                                <p>Test, which is a new approach to have all solutions
-                                                    astrology under one roof.</p>
+                                                <p>Диалоговая комната с ${user.username}.</p>
                                             </span>
                                         </span>
                                 </button>
@@ -67,14 +66,14 @@
                                     <div class="received_msg">
                                         <div class="received_withd_msg">
                                             <p>${message.content}</p>
-                                            <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                                        </div>
                                     </div>
                                 </div>
                             <#else>
                                 <div class="outgoing_msg">
                                     <div class="sent_msg">
                                         <p>${message.content}</p>
-                                        <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                                    </div>
                                 </div>
                             </#if>
                         </#list>
@@ -87,7 +86,8 @@
                                 <form id="preventDefaultOnForm" class="form-inline">
                                     <input id="content" type="text" class="write_msg" placeholder="Type a message"/>
                                     <button id="send" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
-                                                                                  aria-hidden="true"></i></button>
+                                                                                            aria-hidden="true"></i>
+                                    </button>
                                 </form>
                             </div>
                         </div>

@@ -1,6 +1,5 @@
 package ru.find.me.chat;
 
-import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -36,7 +35,6 @@ public class MessageController {
         createRoomIfNotExist(message);
         simpMessagingTemplate.convertAndSendToUser(
                 message.getRecipientId().toString(), "/messages", message);
-        System.out.println(message);
         return message;
     }
 

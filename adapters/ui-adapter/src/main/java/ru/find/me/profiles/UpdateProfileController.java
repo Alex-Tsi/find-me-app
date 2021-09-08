@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import ru.find.me.ProfileService;
 import ru.find.me.UserService;
-import ru.find.me.dao.ProfileRepo;
 import ru.find.me.model.Profile;
-import ru.find.me.publications.util.TransferFile;
+import ru.find.me.util.TransferFile;
 
 import java.io.IOException;
 
@@ -16,13 +16,13 @@ public class UpdateProfileController {
 
     private final UserService userService;
 
-    private final ProfileRepo profileRepo;
+    private final ProfileService profileService;
 
     private final TransferFile transferFile;
 
-    public UpdateProfileController(UserService userService, ProfileRepo repo, TransferFile transferFile) {
+    public UpdateProfileController(UserService userService, ProfileService profileService, TransferFile transferFile) {
         this.userService = userService;
-        this.profileRepo = repo;
+        this.profileService = profileService;
         this.transferFile = transferFile;
     }
 
@@ -39,9 +39,9 @@ public class UpdateProfileController {
                          @RequestParam("email") String email,
                          @RequestParam("description") String description,
                          @RequestParam("address") String address,
-                         @RequestParam("file")MultipartFile file
-                         ) throws IOException {
-        Profile profile = profileRepo.findById(id).get();
+                         @RequestParam("file") MultipartFile file
+    ) throws IOException {
+        Profile profile = profileService.findById(id);
         profile.setSex(sex);
         profile.setAge(age);
         profile.setCountry(country);
@@ -54,7 +54,7 @@ public class UpdateProfileController {
         profile.setDescription(description);
         profile.setAddress(address);
         transferFile.transFile(file, profile);
-        profileRepo.save(profile);
+        profileService.saveProfile(profile);
         return "redirect:/profile/" + profile.getUser().getId();
     }
 }

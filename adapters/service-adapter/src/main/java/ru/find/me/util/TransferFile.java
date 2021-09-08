@@ -1,4 +1,4 @@
-package ru.find.me.publications.util;
+package ru.find.me.util;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

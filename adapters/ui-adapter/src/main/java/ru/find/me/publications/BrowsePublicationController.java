@@ -10,11 +10,11 @@ import ru.find.me.model.Publication;
 import java.util.*;
 
 @Controller
-public class BrowsePublication {
+public class BrowsePublicationController {
 
     private final PublicationService service;
 
-    public BrowsePublication(PublicationService service) {
+    public BrowsePublicationController(PublicationService service) {
         this.service = service;
     }
 
