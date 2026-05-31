@@ -1,13 +1,12 @@
 package ru.find.me;
 
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.find.me.dao.UserRepo;
 import ru.find.me.model.User;
-
-import javax.persistence.EntityManager;
 
 @Service
 public class UserServiceImpl implements UserService {

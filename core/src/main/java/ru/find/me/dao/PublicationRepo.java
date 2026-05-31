@@ -1,11 +1,7 @@
 package ru.find.me.dao;
 
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import ru.find.me.model.Publication;
-
-import java.util.List;
 
 public interface PublicationRepo extends JpaRepository<Publication, Long> {
 

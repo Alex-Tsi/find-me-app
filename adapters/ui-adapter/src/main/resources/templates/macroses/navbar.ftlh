@@ -21,7 +21,7 @@
                         <a class="nav-link active" aria-current="page" id="connect" href="/chat/${currentUserId}">Мессенджер</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/user-publications/1">Мои
+                        <a class="nav-link active" aria-current="page" href="/user-publications/${currentUserId}">Мои
                             публикации</a>
                     </li>
                 </#if>

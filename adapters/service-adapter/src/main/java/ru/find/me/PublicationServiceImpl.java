@@ -1,12 +1,12 @@
 package ru.find.me;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.find.me.dao.PublicationRepo;
 import ru.find.me.model.Publication;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.List;
 
 @Service

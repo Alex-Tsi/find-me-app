@@ -1,12 +1,11 @@
 package ru.find.me;
 
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.find.me.dao.chat.RoomRepo;
 import ru.find.me.model.User;
 import ru.find.me.model.chat.Room;
-
-import javax.persistence.EntityManager;
 
 @Service
 public class RoomServiceImpl implements RoomService {
