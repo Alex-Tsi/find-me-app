@@ -1,13 +1,16 @@
 package ru.find.me.model;
 
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.find.me.model.chat.Room;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 

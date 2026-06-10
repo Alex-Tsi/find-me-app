@@ -1,14 +1,8 @@
 package ru.find.me.model;
 
-import com.sun.istack.Nullable;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
-import org.springframework.util.Assert;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 @Data
 @Entity

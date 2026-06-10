@@ -4,3 +4,6 @@
 /assembly/target/
 /core/target/
 /ports/target/
+/.claude/
+/.idea/
+/uploads/

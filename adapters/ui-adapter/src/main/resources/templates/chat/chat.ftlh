@@ -14,15 +14,8 @@
         </#if>
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
-    <script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
-    <#include "../macroses/imports.ftlh">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
-          rel="stylesheet">
     <link href="/static/css/chat.css" type="text/css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <#include "../macroses/imports.ftlh">
 
 </head>
 <@c.page>

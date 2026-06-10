@@ -1,6 +1,7 @@
 package ru.find.me.security;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,12 @@ import java.util.Collections;
 public class RegistrationController {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
-    public RegistrationController(@Qualifier("userServiceImpl") UserService userService) {
+    public RegistrationController(@Qualifier("userServiceImpl") UserService userService,
+                                  PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/registration")
@@ -28,22 +32,15 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
-        if (checkForExist(user)) {
+        if (userService.findByUsername(user.getUsername()) != null) {
             model.addAttribute("error", "Такой пользователь уже существует!");
             return "security/registration";
-        } else createUser(user);
-        return "redirect:/login";
-    }
-
-    public boolean checkForExist(User user) {
-        return userService.findByUsername(user.getUsername()) != null;
-    }
-
-    public void createUser(User user) {
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
-        Profile profile = new Profile();
-        user.setProfile(profile);
+        user.setProfile(new Profile());
         userService.save(user);
+        return "redirect:/login";
     }
 }

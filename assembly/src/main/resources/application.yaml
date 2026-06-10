@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: { SPRING_DS_URL }
-    username: { SPRING_DS_USERNAME }
-    password: { SPEING_DS_PASS }
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: mysecretpassword
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -15,14 +15,7 @@ spring:
   freemarker:
     expose-request-attributes: true
 
-  session:
-    store-type: none
-
-#  session:
-#    jdbc:
-#      initialize-schema: always
-#      table-name: SPRING_SESSION
 
 upload:
-  path: C:/Users/ATsypushtanov/MyData/find-me-app/uploads
+  path: D:/edu/practice/uploads
 

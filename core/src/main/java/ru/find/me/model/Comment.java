@@ -1,8 +1,7 @@
 package ru.find.me.model;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.persistence.*;
 
 @Setter
 @Getter
