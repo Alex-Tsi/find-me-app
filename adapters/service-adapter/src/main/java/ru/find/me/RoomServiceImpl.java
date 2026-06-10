@@ -28,13 +28,20 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public Room findRoomById(long roomId) {
+        return roomRepo.findById(roomId)
+                .orElseThrow(() -> new NotFoundException("Комната не найдена: " + roomId));
+    }
+
+    @Override
     public void saveRoom(Room room) {
         roomRepo.save(room);
     }
 
     @Override
     public User findCompanionByUserIdAndRoomId(long userId, long roomId) {
-        Room room = roomRepo.findById(roomId).orElseThrow(() -> new RuntimeException("not found"));
+        Room room = roomRepo.findById(roomId)
+                .orElseThrow(() -> new NotFoundException("Комната не найдена: " + roomId));
         long foundedId;
         if (room.getFirstUserId() == userId) {
             foundedId = room.getSecondUserId();

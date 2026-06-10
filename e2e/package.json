@@ -1,0 +1,21 @@
+{
+  "name": "find-me-e2e",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "E2E и ручные функциональные тесты Find Me. claude-e2e — авто-тесты (Playwright/STOMP), user-e2e — ручные HTTP-запросы пользователя.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test:e2e": "node claude-e2e/chat-stomp.mjs && node claude-e2e/chat.mjs && node claude-e2e/publications.mjs",
+    "test:chat": "node claude-e2e/chat.mjs",
+    "test:chat-stomp": "node claude-e2e/chat-stomp.mjs",
+    "test:publications": "node claude-e2e/publications.mjs"
+  },
+  "dependencies": {
+    "@stomp/stompjs": "^7.0.0",
+    "playwright": "^1.60.0",
+    "sockjs-client": "^1.6.1"
+  }
+}

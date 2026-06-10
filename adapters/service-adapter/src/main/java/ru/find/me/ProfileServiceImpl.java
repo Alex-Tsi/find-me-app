@@ -20,6 +20,7 @@ public class ProfileServiceImpl implements ProfileService{
 
     @Override
     public Profile findById(long id) {
-        return profileRepo.findById(id).orElseGet(() -> {throw new RuntimeException("not found");});
+        return profileRepo.findById(id)
+                .orElseThrow(() -> new NotFoundException("Профиль не найден: " + id));
     }
 }

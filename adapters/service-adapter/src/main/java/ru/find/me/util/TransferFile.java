@@ -16,6 +16,24 @@ public class TransferFile {
     @Value("${upload.path}")
     private String uploadPath;
 
+    /**
+     * Сохраняет файл в {@code upload.path} под уникальным именем и возвращает это имя.
+     * Используется REST-слоем (загрузка отделена от сущностей).
+     *
+     * @return имя сохранённого файла или {@code null}, если файл пуст
+     */
+    public String store(MultipartFile file) throws IOException {
+        if (file == null || file.getOriginalFilename() == null || file.getOriginalFilename().isEmpty()) {
+            return null;
+        }
+        File uploadFile = new File(uploadPath);
+        if (!uploadFile.exists()) uploadFile.mkdir();
+
+        String resultFileName = UUID.randomUUID() + "." + file.getOriginalFilename();
+        file.transferTo(new File(uploadPath + "/" + resultFileName));
+        return resultFileName;
+    }
+
     public void transFile(MultipartFile fileName, Publication publication) throws IOException {
         if (fileName != null && !fileName.getOriginalFilename().isEmpty()) {
             File uploadFile = new File(uploadPath);

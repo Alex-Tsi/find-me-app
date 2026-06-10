@@ -1,0 +1,50 @@
+/* Минимальные стили — без UI-фреймворков, чтобы не плодить зависимости. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, Segoe UI, Arial, sans-serif;
+  background: #f5f6f8;
+  color: #1f2430;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 16px; }
+
+.navbar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 24px; background: #1f2430; color: #fff;
+}
+.navbar a { color: #cdd3e0; text-decoration: none; }
+.navbar a:hover { color: #fff; }
+.navbar .spacer { flex: 1; }
+
+.card {
+  background: #fff; border: 1px solid #e3e6ec; border-radius: 8px;
+  padding: 16px; margin-bottom: 12px;
+}
+.card h3 { margin: 0 0 8px; }
+.tags { color: #6b7280; font-size: 13px; }
+
+input, textarea, select {
+  width: 100%; padding: 8px; margin: 4px 0 12px;
+  border: 1px solid #cbd2dc; border-radius: 6px; font: inherit;
+}
+button {
+  padding: 8px 14px; border: 0; border-radius: 6px; cursor: pointer;
+  background: #3b5bdb; color: #fff; font: inherit;
+}
+button.secondary { background: #868e96; }
+button.danger { background: #e03131; }
+button:disabled { opacity: 0.6; cursor: default; }
+
+.error { color: #e03131; margin: 8px 0; }
+.muted { color: #6b7280; }
+.row { display: flex; gap: 16px; }
+.row > * { flex: 1; }
+
+.chat-layout { display: flex; gap: 16px; }
+.dialogs { width: 240px; }
+.dialog { padding: 8px; border-radius: 6px; cursor: pointer; }
+.dialog:hover, .dialog.active { background: #e7ecff; }
+.messages { flex: 1; min-height: 320px; display: flex; flex-direction: column; }
+.message { padding: 6px 10px; border-radius: 10px; margin: 4px 0; max-width: 70%; }
+.message.mine { background: #d0ebff; align-self: flex-end; }
+.message.theirs { background: #fff; border: 1px solid #e3e6ec; align-self: flex-start; }

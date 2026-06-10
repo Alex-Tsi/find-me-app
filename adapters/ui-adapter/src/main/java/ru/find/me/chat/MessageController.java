@@ -1,6 +1,7 @@
 package ru.find.me.chat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,8 @@ import ru.find.me.dao.chat.MessageRepo;
 import ru.find.me.model.User;
 import ru.find.me.model.chat.Message;
 import ru.find.me.model.chat.Room;
+
+import java.security.Principal;
 
 @RestController
 public class MessageController {
@@ -23,7 +26,7 @@ public class MessageController {
     public MessageController(SimpMessagingTemplate simpMessagingTemplate,
                              MessageRepo messageRepo,
                              RoomServiceImpl roomService,
-                             UserService userService) {
+                             @Qualifier("userServiceImpl") UserService userService) {
         this.simpMessagingTemplate = simpMessagingTemplate;
         this.messageRepo = messageRepo;
         this.roomService = roomService;
@@ -31,18 +34,26 @@ public class MessageController {
     }
 
     @MessageMapping("/send")
-    public Message sendMsg(Message message) {
-        createRoomIfNotExist(message);
+    public void sendMsg(Message message, Principal principal) {
+        // Отправитель берётся из аутентифицированной сессии, а не из тела —
+        // иначе клиент мог бы слать сообщения от чужого имени.
+        User sender = userService.findByUsername(principal.getName());
+        User recipient = userService.findById(message.getRecipientId());
+
+        message.setSenderId(sender.getId());
+        message.setSenderName(sender.getUsername());
+        message.setRecipientName(recipient.getUsername());
+
+        createRoomIfNotExist(message, sender, recipient);
+
+        // Доставка по имени получателя: клиент подписан на /user/queue/messages,
+        // Spring резолвит user-destination в /queue/messages-user{session} нужного Principal.
         simpMessagingTemplate.convertAndSendToUser(
-                message.getRecipientId().toString(), "/messages", message);
-        return message;
+                recipient.getUsername(), "/queue/messages", message);
     }
 
-    public void createRoomIfNotExist(Message message) {
-        User sender = userService.findById(message.getSenderId());
-        User recipient = userService.findById(message.getRecipientId());
+    public void createRoomIfNotExist(Message message, User sender, User recipient) {
         Room room = roomService.findByUsers(sender.getId(), recipient.getId());
-        System.out.println(room);
         if (room == null) {
             room = new Room();
             room.addUser(sender);
