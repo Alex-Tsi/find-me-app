@@ -7,6 +7,8 @@ public interface RoomService {
 
     Room findByUsers(long firstId, long secondId);
 
+    Room findRoomById(long roomId);
+
     void saveRoom(Room room);
 
     User findCompanionByUserIdAndRoomId(long userId, long roomId);

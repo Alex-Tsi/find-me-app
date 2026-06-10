@@ -12,9 +12,20 @@ spring:
       ddl-auto: update
 
 
-  freemarker:
-    expose-request-attributes: true
+  mvc:
+    problemdetails:
+      enabled: true   # ошибки фреймворка тоже отдаются как ProblemDetail (RFC 7807)
 
+
+jwt:
+  # В проде секрет обязателен из окружения: export JWT_SECRET=...; здесь dev-fallback.
+  secret: ${JWT_SECRET:change-me-please-this-is-a-dev-only-secret-key-32+}
+  access-expiration-ms: 900000        # 15 минут — короткий, на каждый запрос
+  refresh-expiration-ms: 604800000    # 7 дней — ротируется, живёт в httpOnly cookie
+
+app:
+  cookie:
+    secure: false   # true в проде (HTTPS); false для локального http, иначе cookie не уйдёт
 
 upload:
   path: D:/edu/practice/uploads

@@ -29,7 +29,8 @@ public class PublicationServiceImpl implements PublicationService {
 
     @Override
     public Publication findById(long id) {
-        return publicationRepo.findById(id).orElseThrow(() -> new RuntimeException("not exist"));
+        return publicationRepo.findById(id)
+                .orElseThrow(() -> new NotFoundException("Публикация не найдена: " + id));
     }
 
     @Override

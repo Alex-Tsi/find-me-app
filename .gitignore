@@ -4,6 +4,9 @@
 /assembly/target/
 /core/target/
 /ports/target/
-/.claude/
+/.claude/*
+!/.claude/skills/
 /.idea/
 /uploads/
+*.log
+/screenshots/

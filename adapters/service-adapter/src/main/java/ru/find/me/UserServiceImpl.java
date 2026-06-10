@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import ru.find.me.dao.UserRepo;
 import ru.find.me.model.User;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -32,7 +34,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        return userRepo.findById(id).get();
+        return userRepo.findById(id)
+                .orElseThrow(() -> new NotFoundException("Пользователь не найден: " + id));
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepo.findAll();
     }
 
     @Override
